@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "_LoginPartial";
+}
+
+<style>
+    .dropdown-menu .dropdown-item:hover, .dropdown-menu .dropdown-item:focus {
+        background-color: cornflowerblue;
+    }
+</style>
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row text-white-50">
+            @*
+                <div class="col">
+                    <div class="p-2" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            *@
+            @*RRR <svg class="bi bi-bell" width="2em" height="2em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 18a2 2 0 002-2H8a2 2 0 002 2z"></path>
+                    <path fill-rule="evenodd" d="M10 3.918l-.797.161A4.002 4.002 0 006 8c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C14.134 10.197 14 8.628 14 8a4.002 4.002 0 00-3.203-3.92L10 3.917zM16.22 14c.223.447.482.801.78 1H3c.299-.199.557-.553.78-1C4.68 12.2 5 8.88 5 8c0-2.42 1.72-4.44 4.005-4.901a1 1 0 111.99 0A5.002 5.002 0 0115 8c0 .88.32 4.2 1.22 6z" clip-rule="evenodd"></path>
+                </svg> *@ @*
+                    <span class="badge badge-primary badge-pill">0</span>
+                </div>
+
+                        </div>
+                *@
+
+
+
+                <div>
+                    <a style="color:white" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        <img width="30" src="https://image.flaticon.com/icons/png/512/149/149071.png" class="rounded-circle ml-1 mr-1">                <p>
+                            @Roles.GetRolesForUser()[3]
+
+                            <span class="d-lg-none d-md-block">Acciones</span>
+                        </p>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Ir perfil</a>
+                        <a class="dropdown-item" href="#">Configuracion</a>
+                        <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Cerra sesion</a>
+                    </div>
+                </div>
+
+                @*
+                    <div class="col">
+                        <div class="p-1 dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            <img width="30" src="https://image.flaticon.com/icons/png/512/149/149071.png" class="rounded-circle ml-1 mr-1">
+                            @Session["LogUsNombreApellido"]
+                        </div>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="#">Ir perfil</a>
+                            <a class="dropdown-item" href="#">Condiguracion</a>
+                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Cerra sesion</a>
+                        </div>
+                    </div>
+                *@
+            </div>
+        }
+    }
+    else
+    {
+        @*<ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Iniciar sesión
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        @Html.ActionLink("Empleado", "Login", "CuentasEmpleado", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Estudiante", "Login", "CuentasEstudiante", null, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+            </ul>*@
+    }

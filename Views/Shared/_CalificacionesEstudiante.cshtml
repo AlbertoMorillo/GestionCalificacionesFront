@@ -1,0 +1,324 @@
+﻿
+@model GestionCalificaciones.ViewModel.Calificaciones.CalificacionesViewModel
+<style>
+    .form-control {
+        width: 70px !important;
+    }
+
+    #btnGenerarPDFCalif {
+        display: none;
+    }
+</style>
+<div id="partialCalificaciones">
+    <nav class="">
+        <h3 class="pr-5 text-center ">Registro Calificación</h3>
+    </nav>
+    <hr />
+
+    @using (Html.BeginForm("GuardarCalificaciones", "VirtualEmpleado", FormMethod.Post))
+    {
+        <div class="mb-5">
+            <div class="form-row">
+                <a id="btnGenerarPDFCalif" href="#" class="btn btn-info">
+                    <i class="fa fa-print"></i>
+                    Imprimir calificaciones
+                </a>
+            </div>
+            <div class="form-row">
+                <div class="col-4">
+                    <label for="exampleFormControlSelect1">Asignatura</label>
+                    @Html.DropDownListFor(m => m.Materia, ViewBag.listMateria as IEnumerable<SelectListItem>,
+            new
+                {
+                    @class = "custom-select custom-select-lg",
+                    @id = "materiaDropDown"
+            })
+                </div>
+                <div class="col-4">
+                    <label for="exampleFormControlSelect1">Grupo</label>
+                    @Html.DropDownListFor(m => m.grupo, ViewBag.listGrupo as IEnumerable<SelectListItem>,
+            new
+                {
+                    @class = "custom-select custom-select-lg",
+                    @id = "grupoDropDown"
+            })
+                </div>
+            </div>
+        </div>
+
+       
+        <span id="textLoading" class="font-weight-bold text-uppercase text-center text-primary"></span>
+        <div class="text-right">
+            <span class="font-weight-bold">TP</span>: <span class="font-italic">Trabajo Práctico&nbsp;&nbsp;</span>
+            <span class="font-weight-bold">PP</span>: <span class="font-italic">Pruebas Parciales&nbsp;&nbsp;</span>
+            <span class="font-weight-bold">EF</span>: <span class="font-italic">Examen Final&nbsp;&nbsp;</span>
+            <span class="font-weight-bold">PF</span>: <span class="font-italic">Promedio Final&nbsp;&nbsp;</span>
+            <span class="font-weight-bold">NL</span>: <span class="font-italic">Nota Literal&nbsp;&nbsp;</span>
+        </div>
+        <div class="">
+            <table class="table border-bottom" id="tableCalificaciones">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 70px;">Matrícula</th>
+                        <th scope="col" class="w-75">Nombre y apellido</th>
+                        <th scope="col" style="width: 70px;">TP</th>
+                        <th scope="col" style="width: 70px;">PP</th>
+                        <th scope="col" style="width: 70px;">EF</th>
+                        <th scope="col" style="width: 70px;">PF</th>
+                        <th scope="col" style="width: 70px;">NL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.estudiantesSelected != null)
+                    {
+                        for (int i = 0; i < Model.estudiantesSelected.Count; i++)
+                        {
+                            <tr>
+                                @Html.HiddenFor(s => Model.estudiantesSelected[i].Matricula, new { @class = "matricula" })
+                                @Html.HiddenFor(s => Model.estudiantesSelected[i].Nombre, new { @class = "nombreEst" })
+                                <td>@Html.DisplayFor(s => Model.estudiantesSelected[i].Matricula, new { @class = "matricula" })</td>
+                                <td>@Html.DisplayFor(s => Model.estudiantesSelected[i].Nombre, new { @class = "nombreEst" })</td>
+                                <td>@Html.TextBoxFor(s => Model.estudiantesSelected[i].TP, new { @class = "trabajoPractico form-control", @type = "number", @min = "0", @max = "100" })</td>
+                                <td>@Html.TextBoxFor(s => Model.estudiantesSelected[i].PP, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+                                <td>@Html.TextBoxFor(s => Model.estudiantesSelected[i].EF, new { @class = "form-control examenFinal", @type = "number", @min = "0", @max = "100" })</td>
+                                <td>@Html.TextBoxFor(s => Model.estudiantesSelected[i].PF, new { @class = "form-control promedioFinal", @readonly = true })</td>
+                                <td>@Html.TextBoxFor(s => Model.estudiantesSelected[i].NL, new { @class = "form-control notaLiteral", @readonly = true })</td>
+                                @Html.HiddenFor(s => Model.estudiantesSelected[i].PF, new { @class = "promedioFinal" })
+                                @Html.HiddenFor(s => Model.estudiantesSelected[i].NL, new { @class = "notaLiteral" })
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="p-3">
+            <input hidden type="submit" id="publicarNotaBtn" class="btn btn-primary btn-lg" value="Publicar calificaciones" />
+
+        </div>
+    }
+    <div class="p-3">
+        <button id="finalizarNotaBtn" class="btn btn-success btn-lg">Finalizar</button>
+    </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="modalUtils">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="utilsTitle"></h5>
+            </div>
+            <div class="modal-body">
+                <p id="utilsP"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnUtils" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="modalFlagCalificado">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Atención</h5>
+            </div>
+            <div class="modal-body">
+                <p>Este grupo ya ha sido calificado</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="modalCalendarioNotas">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Atención</h5>
+            </div>
+            <div class="modal-body">
+                <p>El proceso de registro de calificaciones no se encuentra disponible. Por favor consulte el calendario.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+            var flagCalificado = @ViewBag.flagCalificado.ToString().ToLower();
+            if (flagCalificado) {
+                $("#modalFlagCalificado").modal('show');
+                $("#btnGenerarPDFCalif").css("display", "block");
+                $("#btnGenerarPDFCalif").prop("target", "_blank");
+                $("#btnGenerarPDFCalif").prop("href", "@Html.Raw(Url.Action("GenerarCalificacionPDF", "VirtualEmpleado", new { materiaParam= Model.Materia, grupoParam=Model.grupo }))");
+                $('#tableCalificaciones>tbody>tr').each(function () {
+                    deshabilitarCamposRowGuardado($(this));
+                });
+            }
+            $("#finalizarNotaBtn").attr("disabled", flagCalificado);
+
+        //Animacion accion finalizar y publicar
+        $("#finalizarNotaBtn").click(function () {
+            llenarInputsVacios();
+        });
+
+        //Validar si puede guardar
+        if (@Model.estudiantesSelected.Count == 0) {
+            $("#finalizarNotaBtn").prop("disabled", true);
+        }
+
+        // dropdown load grupo async
+        $(document).on("change", "#grupoDropDown", function (e) {
+            var val = $('#grupoDropDown option:selected').val();
+            var val1 = $('#materiaDropDown option:selected').val();
+            ModalLoading();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("getLisEstByMateriaGrupo", "VirtualEmpleado")',
+                data: { materiaSelected: val1, grupoSel: val },
+                success: function successFunc(data) {
+                    $("#partialCalificaciones").html(data);
+                },
+                error: function errorFunc() {
+                    alert('error');
+                },
+                complete: function () {
+                    //Valida si hay alguna R
+                    $('#tableCalificaciones>tbody>tr').each(function () {
+                        if ($(this).find(".notaLiteral").val() == "R") {
+                            desbilitarCamposRow($(this));
+                        }
+                    });
+                }
+            });
+            e.stopImmediatePropagation();
+        });
+
+        //Dropdown load listEstudiante async
+        $(document).on("change", "#materiaDropDown", function (e) {
+            var val = $('#materiaDropDown option:selected').val();
+            ModalLoading();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("getGrupoByMateria", "VirtualEmpleado")',
+                data: { materiaSelected: val },
+                success: function successFunc(data) {
+                    $("#partialCalificaciones").replaceWith(data);
+                },
+                error: function errorFunc() {
+                    alert('error');
+                }
+            });
+            e.stopImmediatePropagation();
+        });
+
+        //Calculator Calificaciones
+        $("#tableCalificaciones").change("input[type=number]", function () {
+
+            calcularCalificaciones();
+        });
+
+        $("input").on("invalid", function (event) {
+            this.setCustomValidity("Debe ingresar números mayor o igual a 0, y menor o igual a 100.")
+        });
+
+        $("input").on("input", function (event) {
+            this.setCustomValidity("");
+        });
+    });
+
+    var grupo, materia;
+
+    function llenarInputsVacios() {
+        var ind = 0;
+        $('#tableCalificaciones>tbody>tr').each(function () {
+            $(this).find("input[type=number]").each(function () {
+                if (this.value == "") {
+                    $("#utilsTitle").text("Atención");
+                    $("#utilsP").text("Debe completar todos los campos antes de finalizar.");
+                    $("#modalUtils").modal("show");
+                    ind = 1;
+                    return false;
+                }
+            });
+        });
+        if (ind == 0) {
+            $("#publicarNotaBtn").prop("hidden", false);
+            $("#finalizarNotaBtn").hide();
+        }
+        return true;
+    }
+
+    //Calcula las calificaciones de los inputs
+    function calcularCalificaciones() {
+        $('#tableCalificaciones>tbody>tr').each(function () {
+            var prom = 0;
+            var sum = 0;
+            $(this).find("input[type=number]").not(".promedioFinal").each(function () {
+                var v = $(this).val();
+                if (v < 0) $(this).val(0);
+                if (v > 100) $(this).val(100);
+                if (!isNaN(this.value) && this.value.length != 0) {
+                    sum += parseFloat(this.value);
+                }
+            });
+
+            prom = (sum / 3).toFixed(0);
+            $(this).find(".promedioFinal").val(prom);
+            getNotaLiteral(prom, $(this).find(".notaLiteral"));
+
+            if (!isNaN($(this).find(".trabajoPractico").val()) && $(this).find(".trabajoPractico").val() < 70
+                && $(this).find(".trabajoPractico").val() != "") {
+                if ($(this).find(".notaLiteral").val() != "R")
+                    $(this).find(".notaLiteral").val("F");
+                $(this).find(".promedioFinal").val(0);
+            }
+            if (!isNaN($(this).find(".examenFinal").val()) && $(this).find(".examenFinal").val() < 55
+                && $(this).find(".examenFinal").val() != "") {
+                if ($(this).find(".notaLiteral").val() != "R")
+                    $(this).find(".notaLiteral").val("F");
+                $(this).find(".promedioFinal").val(0);
+            }
+        });
+    };
+
+    // Desabilita todos los inputs de una fila especifica
+    function desbilitarCamposRow(objDom) {
+        objDom.find('input').not(".notaLiteral").not(".matricula").not(".nombreEst").each(function () {
+            $(this).val(0);
+            $(this).attr("readonly", true);
+        });
+    }
+
+    //Desplega la nota literal
+    function getNotaLiteral(prom, ObjDom) {
+        if (prom >= 95)
+            ObjDom.val("A+");
+        else if (prom >= 90 && prom < 95)
+            ObjDom.val("A");
+        else if (prom >= 90 && prom < 95)
+            ObjDom.val("A");
+        else if (prom >= 85 && prom < 90)
+            ObjDom.val("B+");
+        else if (prom >= 80 && prom < 85)
+            ObjDom.val("B");
+        else if (prom >= 75 && prom < 80)
+            ObjDom.val("C+");
+        else if (prom >= 70 && prom < 75)
+            ObjDom.val("C");
+        else if (prom >= 65 && prom < 70)
+            ObjDom.val("D+");
+        else if (prom >= 0 && prom < 65) {
+            if (ObjDom.val() != "R")
+                ObjDom.val("F");
+        }
+    }
+    function ModalLoading() {
+        $("#textLoading").text("Cargando...");
+    }
+
+    function deshabilitarCamposRowGuardado(objDom) {
+        objDom.find('input').not(".notaLiteral").not(".matricula").not(".nombreEst").each(function () {
+            $(this).attr("readonly", true);
+        });
+    }
+</script>

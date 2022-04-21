@@ -1,0 +1,200 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+
+
+<div class="card" style="background-image: linear-gradient(15deg, #5b6be8 30%, #00B4D8 70%); color: black;
+        padding: 2em;">
+    <div class="row">
+        <div class="col-3">
+            <div class="p-5">
+                <center>
+                    <object data="~/imagen/user/@ViewBag.FotoPerfil-.jpg" style="border-radius:100%;width:200px" type="image/png">
+                        <img src="https://image.flaticon.com/icons/png/512/149/149071.png" width="200" class="img-circle">
+                    </object>
+                </center>
+            </div>
+            <div class="pb-5 text-center">
+                <h5>
+                    <a href="~/VirtualEmpleado/CambiarFoto">Cambiar foto de perfil</a>
+                </h5>
+            </div>
+        </div>
+        <div class="col-9">
+
+
+            @*
+                <div class="pt-5">
+                    <h3 class="display-4">@ViewBag.DatosPerfil.PrimerNombre @ViewBag.DatosPerfil.PrimerApellido  @ViewBag.DatosPerfil.SegundoNombre @ViewBag.DatosPerfil.SegundoApellido</h3>
+                </div>
+            *@
+
+            <div class="row ">
+                <div class="col-sm-10">
+                    <div class="form-group">
+                        <p class="form-control-static display-4">@ViewBag.DatosPerfil.PrimerNombre @ViewBag.DatosPerfil.PrimerApellido  @ViewBag.DatosPerfil.SegundoNombre @ViewBag.DatosPerfil.SegundoApellido  </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-6">
+
+
+                    <div class="row ">
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <p class="form-control-static"><i class="nc-icon nc-single-02"></i>  @('@')@Roles.GetRolesForUser()[2]</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row ">
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <p class="form-control-static"><i class="nc-icon nc-email-85"></i>  @ViewBag.DatosPerfil.CorreoElectronico</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <p class="form-control-static"><i class="nc-icon nc-paper"></i>  @ViewBag.DatosPerfil.FechaNacimiento</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row ">
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <p class="form-control-static"><i class="nc-icon nc-world-2"></i>  @ViewBag.DatosPerfil.Direccion</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-6 pt-5">
+
+                    <div class="row ">
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <p class="form-control-static"><i class="nc-icon nc-mobile"></i> @ViewBag.DatosPerfil.Telefono</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <p class="form-control-static"><i class="nc-icon nc-mobile"></i> @ViewBag.DatosPerfil.Celular</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="pt-4 pb-4 pl-3">
+                        <h5>
+                            <a href="~/VirtualEmpleado/EditarInformacion">Editar información</a>
+                        </h5>
+                        <h5>
+                            @Html.ActionLink("Cambiar contraseña", "CambiarPassword", "VirtualEstudiante")
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*
+    <div class="row">
+        <div class="col-12 p-5">
+            <div class="card">
+                <div class="row m-0" id="Horarios">
+                    <h3 class="p-3 m-0 col"><small>Horarios clase</small></h3>
+                    <div class="p-3 w-100 col">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <select class="custom-select" id="exampleFormControlSelect1">
+                                        <option>Seleccione asignatura</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <select class="custom-select" id="exampleFormControlSelect1">
+                                        <option>Seleccione Grupo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr class="mt-0" />
+                <div class="pt-3">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Grupo</th>
+                                <th>Asignatura</th>
+                                <th>Lun</th>
+                                <th>Mar</th>
+                                <th>Mie</th>
+                                <th>Jue</th>
+                                <th>Vie</th>
+                                <th>Sab</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>1298</th>
+                                <td><a href="/VirtualEmpleado/ListadoGrupos">MATEMATICA</a></td>
+                                <td>8:00 AM <br /> 10:00 AM</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>04:00 PM <br /> 08:00 PM</td>
+                            </tr>
+                            <tr>
+                                <th>6568</th>
+                                <td><a href="/VirtualEmpleado/ListadoGrupos">MATEMATICA</a></td>
+                                <td></td>
+                                <td></td>
+                                <td>8:00 AM <br /> 10:00 AM</td>
+                                <td></td>
+                                <td>04:00 PM <br /> 08:00 PM</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>9908</th>
+                                <td><a href="/VirtualEmpleado/ListadoGrupos">MATEMATICA</a></td>
+                                <td></td>
+                                <td>8:00 AM <br /> 10:00 AM</td>
+                                <td></td>
+                                <td>04:00 PM <br /> 08:00 PM</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>5998</th>
+                                <td><a href="/VirtualEmpleado/ListadoGrupos">MATEMATICA</a></td>
+                                <td>8:00 AM <br /> 10:00 AM</td>
+                                <td>04:00 PM <br /> 08:00 PM</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+*@

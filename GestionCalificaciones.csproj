@@ -1,0 +1,668 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C4AF920C-2199-42FF-A317-B021C176F2EF}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GestionCalificaciones</RootNamespace>
+    <AssemblyName>GestionCalificaciones</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44317</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="RestSharp, Version=107.3.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>packages\RestSharp.107.3.0\lib\netstandard2.0\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.5.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.5.0.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Constantes\Constantes.cs" />
+    <Compile Include="Controllers\CuentasEmpleadoController.cs" />
+    <Compile Include="Controllers\CuentasEstudianteController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\VirtualEmpleadoController.cs" />
+    <Compile Include="Controllers\VirtualEstudianteController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Asignatura.cs" />
+    <Compile Include="Models\Calificacion.cs" />
+    <Compile Include="Models\Empleados.cs" />
+    <Compile Include="Models\Escuela.cs" />
+    <Compile Include="Models\Horario.cs" />
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Profesor.cs" />
+    <Compile Include="Models\Security\GCMvcRoleProvider.cs" />
+    <Compile Include="Models\Seleccion.cs" />
+    <Compile Include="Models\spes_CalificacionEstudiante_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoEmpleados.cs" />
+    <Compile Include="Models\TipoUsuarios.cs" />
+    <Compile Include="Models\Valores.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\DistritosMunicipales.cs" />
+    <Compile Include="Services\Asignatura\AsignaturaModelService.cs" />
+    <Compile Include="Services\CalificacionModelService.cs" />
+    <Compile Include="Services\Empleados\EmpleadosModelService.cs" />
+    <Compile Include="Services\Estudiantes\EstudiantesModelService.cs" />
+    <Compile Include="Services\Horario\HorarioModelService.cs" />
+    <Compile Include="Services\Seleccion\SeleccionModelService.cs" />
+    <Compile Include="Services\UsuariosModelService.cs" />
+    <Compile Include="ViewModel\Calificaciones\CalificacionesViewModel.cs" />
+    <Compile Include="ViewModel\Empleados\EmpleadosViewMode.cs" />
+    <Compile Include="ViewModel\Estudiantes\EstudiantesViewMode.cs" />
+    <Compile Include="ViewModel\SeleccionViewModel.cs" />
+    <Compile Include="ViewModel\TiposUsuarios\TiposUsuariosModelService.cs" />
+    <Compile Include="ViewModel\Usuarios\ResetPasswordViewModel.cs" />
+    <Compile Include="Models\Usuarios.cs" />
+    <Compile Include="ViewModel\Usuarios\UsuariosFormViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\Bootstrap-4---Photo-Gallery.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\dashboard-pro.css" />
+    <Content Include="assets\css\paper-dashboard.css" />
+    <Content Include="assets\css\paper-dashboard.min.css" />
+    <Content Include="assets\css\paper-dashboard.min_original.css" />
+    <Content Include="assets\css\paper-dashboard.min_tema1.css" />
+    <Content Include="assets\css\paper-dashboard.min_tema3.css" />
+    <Content Include="assets\css\sifha-dashboard.ori.css" />
+    <Content Include="assets\demo\demo.css" />
+    <Content Include="assets\demo\demo.js" />
+    <Content Include="assets\img\agenda.png" />
+    <Content Include="assets\img\apple-icon.png" />
+    <Content Include="assets\img\AU.png" />
+    <Content Include="assets\img\bg\ana-bernardo.jpg" />
+    <Content Include="assets\img\bg\anders-jilden.jpg" />
+    <Content Include="assets\img\bg\angelo-pantazis.jpg" />
+    <Content Include="assets\img\bg\ben-white.jpg" />
+    <Content Include="assets\img\bg\bruno-abatti.jpg" />
+    <Content Include="assets\img\bg\chris-karidisz.jpg" />
+    <Content Include="assets\img\bg\clark-street-mercantile.jpg" />
+    <Content Include="assets\img\bg\damir-bosnjak.jpg" />
+    <Content Include="assets\img\bg\daniel-olahh.jpg" />
+    <Content Include="assets\img\bg\daniel-olahs.jpg" />
+    <Content Include="assets\img\bg\david-marcu.jpg" />
+    <Content Include="assets\img\bg\fabio-mangione.jpg" />
+    <Content Include="assets\img\bg\federico-beccari.jpg" />
+    <Content Include="assets\img\bg\fog-low.png" />
+    <Content Include="assets\img\bg\forest-bg.jpg" />
+    <Content Include="assets\img\bg\galen-crout.jpg" />
+    <Content Include="assets\img\bg\gerrit-vermeulen.jpg" />
+    <Content Include="assets\img\bg\gukhwa-jang.jpg" />
+    <Content Include="assets\img\bg\gukhwa-jangs.jpg" />
+    <Content Include="assets\img\bg\ilya-yakover.jpg" />
+    <Content Include="assets\img\bg\ipad.png" />
+    <Content Include="assets\img\bg\iphone.png" />
+    <Content Include="assets\img\bg\jan-sendereks.jpg" />
+    <Content Include="assets\img\bg\jeff-sheldon.jpg" />
+    <Content Include="assets\img\bg\jeremy-yap.jpg" />
+    <Content Include="assets\img\bg\john-towner.jpg" />
+    <Content Include="assets\img\bg\joshua-earles.jpg" />
+    <Content Include="assets\img\bg\joshua-earlesz.jpg" />
+    <Content Include="assets\img\bg\joshua-earlez.jpg" />
+    <Content Include="assets\img\bg\joshua-stannard.jpg" />
+    <Content Include="assets\img\bg\leonard-cotte.jpg" />
+    <Content Include="assets\img\bg\luke-chesser.jpg" />
+    <Content Include="assets\img\bg\markus-spiske-187777.jpg" />
+    <Content Include="assets\img\bg\martin-knize.jpg" />
+    <Content Include="assets\img\bg\miguel-perales.jpg" />
+    <Content Include="assets\img\bg\mika-matin.jpg" />
+    <Content Include="assets\img\bg\neill-kumar.jpg" />
+    <Content Include="assets\img\bg\noah-rosenfield.jpg" />
+    <Content Include="assets\img\bg\opt_gsdk_new_thumbnail.jpg" />
+    <Content Include="assets\img\bg\opt_lbd_pro_new_thumbnail.jpg" />
+    <Content Include="assets\img\bg\opt_pk_thumbnail.jpg" />
+    <Content Include="assets\img\bg\patrick-tomasso.jpg" />
+    <Content Include="assets\img\bg\pavel-kosov.jpg" />
+    <Content Include="assets\img\bg\pedro-lastra.jpg" />
+    <Content Include="assets\img\bg\pk-pro-cover.jpg" />
+    <Content Include="assets\img\bg\por7o.jpg" />
+    <Content Include="assets\img\bg\rawpixel-com-2.jpg" />
+    <Content Include="assets\img\bg\rawpixel-com.jpg" />
+    <Content Include="assets\img\bg\rawpixel-comm.jpg" />
+    <Content Include="assets\img\bg\rawpixel-coms.jpg" />
+    <Content Include="assets\img\bg\rodrigo-ardilha.jpg" />
+    <Content Include="assets\img\bg\roger-keller.jpg" />
+    <Content Include="assets\img\bg\sebastien-gabrieles.jpg" />
+    <Content Include="assets\img\bg\soroush-karimi.jpg" />
+    <Content Include="assets\img\bg\stephanie-krist.jpg" />
+    <Content Include="assets\img\bg\takahiro-sakamoto.jpg" />
+    <Content Include="assets\img\bg\the-how-photographer.jpg" />
+    <Content Include="assets\img\bg\uriel-soberanes.jpg" />
+    <Content Include="assets\img\bg\val-vesa.jpg" />
+    <Content Include="assets\img\bg\vincent-versluis.jpg" />
+    <Content Include="assets\img\bg\zachary-staines.jpg" />
+    <Content Include="assets\img\BR.png" />
+    <Content Include="assets\img\DE.png" />
+    <Content Include="assets\img\default-avatar.png" />
+    <Content Include="assets\img\emilyz.jpg" />
+    <Content Include="assets\img\evernote.png" />
+    <Content Include="assets\img\face-2.jpg" />
+    <Content Include="assets\img\face-3.jpg" />
+    <Content Include="assets\img\faces\ayo-ogunseinde-1.jpg" />
+    <Content Include="assets\img\faces\ayo-ogunseinde-2.jpg" />
+    <Content Include="assets\img\faces\clem-onojeghuo-1.jpg" />
+    <Content Include="assets\img\faces\clem-onojeghuo-2.jpg" />
+    <Content Include="assets\img\faces\clem-onojeghuo-3.jpg" />
+    <Content Include="assets\img\faces\clem-onojeghuo-4.jpg" />
+    <Content Include="assets\img\faces\erik-lucatero-1.jpg" />
+    <Content Include="assets\img\faces\erik-lucatero-2.jpg" />
+    <Content Include="assets\img\faces\joe-gardner-1.jpg" />
+    <Content Include="assets\img\faces\joe-gardner-2.jpg" />
+    <Content Include="assets\img\faces\kaci-baum-1.jpg" />
+    <Content Include="assets\img\faces\kaci-baum-2.jpg" />
+    <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\flags\AD.png" />
+    <Content Include="assets\img\flags\AE.png" />
+    <Content Include="assets\img\flags\AG.png" />
+    <Content Include="assets\img\flags\AM.png" />
+    <Content Include="assets\img\flags\AR.png" />
+    <Content Include="assets\img\flags\AT.png" />
+    <Content Include="assets\img\flags\AU.png" />
+    <Content Include="assets\img\flags\BE.png" />
+    <Content Include="assets\img\flags\BF.png" />
+    <Content Include="assets\img\flags\BG.png" />
+    <Content Include="assets\img\flags\BO.png" />
+    <Content Include="assets\img\flags\BR.png" />
+    <Content Include="assets\img\flags\CA.png" />
+    <Content Include="assets\img\flags\CD.png" />
+    <Content Include="assets\img\flags\CG.png" />
+    <Content Include="assets\img\flags\CH.png" />
+    <Content Include="assets\img\flags\CL.png" />
+    <Content Include="assets\img\flags\CM.png" />
+    <Content Include="assets\img\flags\CN.png" />
+    <Content Include="assets\img\flags\CO.png" />
+    <Content Include="assets\img\flags\CZ.png" />
+    <Content Include="assets\img\flags\DE.png" />
+    <Content Include="assets\img\flags\DJ.png" />
+    <Content Include="assets\img\flags\DK.png" />
+    <Content Include="assets\img\flags\DZ.png" />
+    <Content Include="assets\img\flags\EE.png" />
+    <Content Include="assets\img\flags\EG.png" />
+    <Content Include="assets\img\flags\ES.png" />
+    <Content Include="assets\img\flags\FI.png" />
+    <Content Include="assets\img\flags\FR.png" />
+    <Content Include="assets\img\flags\GA.png" />
+    <Content Include="assets\img\flags\GB.png" />
+    <Content Include="assets\img\flags\GM.png" />
+    <Content Include="assets\img\flags\GT.png" />
+    <Content Include="assets\img\flags\HN.png" />
+    <Content Include="assets\img\flags\HT.png" />
+    <Content Include="assets\img\flags\HU.png" />
+    <Content Include="assets\img\flags\ID.png" />
+    <Content Include="assets\img\flags\IE.png" />
+    <Content Include="assets\img\flags\IL.png" />
+    <Content Include="assets\img\flags\IN.png" />
+    <Content Include="assets\img\flags\IQ.png" />
+    <Content Include="assets\img\flags\IR.png" />
+    <Content Include="assets\img\flags\IT.png" />
+    <Content Include="assets\img\flags\JM.png" />
+    <Content Include="assets\img\flags\JO.png" />
+    <Content Include="assets\img\flags\JP.png" />
+    <Content Include="assets\img\flags\KG.png" />
+    <Content Include="assets\img\flags\KN.png" />
+    <Content Include="assets\img\flags\KP.png" />
+    <Content Include="assets\img\flags\KR.png" />
+    <Content Include="assets\img\flags\KW.png" />
+    <Content Include="assets\img\flags\KZ.png" />
+    <Content Include="assets\img\flags\LA.png" />
+    <Content Include="assets\img\flags\LB.png" />
+    <Content Include="assets\img\flags\LC.png" />
+    <Content Include="assets\img\flags\LS.png" />
+    <Content Include="assets\img\flags\LU.png" />
+    <Content Include="assets\img\flags\LV.png" />
+    <Content Include="assets\img\flags\MG.png" />
+    <Content Include="assets\img\flags\MK.png" />
+    <Content Include="assets\img\flags\ML.png" />
+    <Content Include="assets\img\flags\MM.png" />
+    <Content Include="assets\img\flags\MT.png" />
+    <Content Include="assets\img\flags\MX.png" />
+    <Content Include="assets\img\flags\NA.png" />
+    <Content Include="assets\img\flags\NE.png" />
+    <Content Include="assets\img\flags\NG.png" />
+    <Content Include="assets\img\flags\NI.png" />
+    <Content Include="assets\img\flags\NL.png" />
+    <Content Include="assets\img\flags\NO.png" />
+    <Content Include="assets\img\flags\OM.png" />
+    <Content Include="assets\img\flags\PA.png" />
+    <Content Include="assets\img\flags\PE.png" />
+    <Content Include="assets\img\flags\PG.png" />
+    <Content Include="assets\img\flags\PK.png" />
+    <Content Include="assets\img\flags\PL.png" />
+    <Content Include="assets\img\flags\PT.png" />
+    <Content Include="assets\img\flags\PY.png" />
+    <Content Include="assets\img\flags\QA.png" />
+    <Content Include="assets\img\flags\RO.png" />
+    <Content Include="assets\img\flags\RU.png" />
+    <Content Include="assets\img\flags\RW.png" />
+    <Content Include="assets\img\flags\SA.png" />
+    <Content Include="assets\img\flags\SE.png" />
+    <Content Include="assets\img\flags\SG.png" />
+    <Content Include="assets\img\flags\SL.png" />
+    <Content Include="assets\img\flags\SN.png" />
+    <Content Include="assets\img\flags\SO.png" />
+    <Content Include="assets\img\flags\SV.png" />
+    <Content Include="assets\img\flags\TD.png" />
+    <Content Include="assets\img\flags\TJ.png" />
+    <Content Include="assets\img\flags\TL.png" />
+    <Content Include="assets\img\flags\TR.png" />
+    <Content Include="assets\img\flags\TZ.png" />
+    <Content Include="assets\img\flags\UA.png" />
+    <Content Include="assets\img\flags\US.png" />
+    <Content Include="assets\img\flags\VE.png" />
+    <Content Include="assets\img\flags\VN.png" />
+    <Content Include="assets\img\flags\YE.png" />
+    <Content Include="assets\img\GB.png" />
+    <Content Include="assets\img\header.jpg" />
+    <Content Include="assets\img\imagenbotonpago.png" />
+    <Content Include="assets\img\image_placeholder.jpg" />
+    <Content Include="assets\img\james.jpg" />
+    <Content Include="assets\img\logo-small.png" />
+    <Content Include="assets\img\mike.jpg" />
+    <Content Include="assets\img\now-logo.png" />
+    <Content Include="assets\img\placeholder.jpg" />
+    <Content Include="assets\img\RO.png" />
+    <Content Include="assets\img\stylus.jpg" />
+    <Content Include="assets\img\US.png" />
+    <Content Include="assets\js\core\bootstrap.min.js" />
+    <Content Include="assets\js\core\jquery.min.js" />
+    <Content Include="assets\js\core\popper.min.js" />
+    <Content Include="assets\js\dashboard-pro.js" />
+    <Content Include="assets\js\paper-dashboard.js" />
+    <Content Include="assets\js\paper-dashboard.min.js" />
+    <Content Include="assets\js\plugins\bootstrap-datetimepicker.js" />
+    <Content Include="assets\js\plugins\bootstrap-notify.js" />
+    <Content Include="assets\js\plugins\bootstrap-selectpicker.js" />
+    <Content Include="assets\js\plugins\bootstrap-switch.js" />
+    <Content Include="assets\js\plugins\bootstrap-tagsinput.js" />
+    <Content Include="assets\js\plugins\chartjs.min.js" />
+    <Content Include="assets\js\plugins\dashboard-pro.js" />
+    <Content Include="assets\js\plugins\fullcalendar\locales-all.js" />
+    <Content Include="assets\js\plugins\fullcalendar\locales-all.min.js" />
+    <Content Include="assets\js\plugins\fullcalendar\main.css" />
+    <Content Include="assets\js\plugins\fullcalendar\main.js" />
+    <Content Include="assets\js\plugins\fullcalendar\main.min.css" />
+    <Content Include="assets\js\plugins\fullcalendar\main.min.js" />
+    <Content Include="assets\js\plugins\jasny-bootstrap.min.js" />
+    <Content Include="assets\js\plugins\jquery-bootpag.min.js" />
+    <Content Include="assets\js\plugins\jquery-jvectormap.js" />
+    <Content Include="assets\js\plugins\jquery.bootstrap-wizard.js" />
+    <Content Include="assets\js\plugins\jquery.dataTables.min.js" />
+    <Content Include="assets\js\plugins\jquery.validate.min.js" />
+    <Content Include="assets\js\plugins\moment.min.js" />
+    <Content Include="assets\js\plugins\nouislider.min.js" />
+    <Content Include="assets\js\plugins\perfect-scrollbar.jquery.min.js" />
+    <Content Include="assets\js\plugins\sweetalert2.min.js" />
+    <Content Include="assets\Notificaciones\Notificaciones.css" />
+    <Content Include="assets\Notificaciones\Notificaciones.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="imagen\logoUnphuPP.jpg" />
+    <Content Include="imagen\unphu1.jpg" />
+    <Content Include="imagen\unphu_verde.png" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="assets\css\bootstrap.min.css.map" />
+    <Content Include="assets\css\dashboard-pro.css.map" />
+    <Content Include="assets\css\dashboard-pro.js.map" />
+    <Content Include="assets\css\paper-dashboard.css.map" />
+    <Content Include="assets\fonts\nucleo-icons.eot" />
+    <Content Include="assets\fonts\nucleo-icons.ttf" />
+    <Content Include="assets\fonts\nucleo-icons.woff" />
+    <Content Include="assets\fonts\nucleo-icons.woff2" />
+    <Content Include="assets\js\dashboard-pro.js.map" />
+    <Content Include="assets\js\paper-dashboard.js.map" />
+    <Content Include="assets\js\plugins\dashboard-pro.js.map" />
+    <Content Include="assets\scss\paper-dashboard.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-background.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-chart.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-collapse.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-contributions.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-info-area.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-lock.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-map.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-plain.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-pricing.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-profile.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-signup.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-stats-mini.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-stats.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-subcategories.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-tasks.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-testimonials.scss" />
+    <Content Include="assets\scss\paper-dashboard\cards\_card-user.scss" />
+    <Content Include="assets\scss\paper-dashboard\mixins\_badges.scss" />
+    <Content Include="assets\scss\paper-dashboard\mixins\_buttons.scss" />
+    <Content Include="assets\scss\paper-dashboard\mixins\_cards.scss" />
+    <Content Include="assets\scss\paper-dashboard\mixins\_chartist.scss" />
+    <Content Include="assets\scss\paper-dashboard\mixins\_dropdown.scss" />
+    <Content Include="assets\scss\paper-dashboard\mixins\_inputs.scss" />
+    <Content Include="assets\scss\paper-dashboard\mixins\_modals.scss" />
+    <Content Include="assets\scss\paper-dashboard\mixins\_page-header.scss" />
+    <Content Include="assets\scss\paper-dashboard\mixins\_popovers.scss" />
+    <Content Include="assets\scss\paper-dashboard\mixins\_social-buttons.scss" />
+    <Content Include="assets\scss\paper-dashboard\mixins\_tags.scss" />
+    <Content Include="assets\scss\paper-dashboard\mixins\_transparency.scss" />
+    <Content Include="assets\scss\paper-dashboard\mixins\_vendor-prefixes-extend.scss" />
+    <Content Include="assets\scss\paper-dashboard\mixins\_vendor-prefixes.scss" />
+    <Content Include="assets\scss\paper-dashboard\mixins\_wizard.scss" />
+    <Content Include="assets\scss\paper-dashboard\plugins\_plugin-animate-bootstrap-notify.scss" />
+    <Content Include="assets\scss\paper-dashboard\plugins\_plugin-bootstrap-select.scss" />
+    <Content Include="assets\scss\paper-dashboard\plugins\_plugin-bootstrap-switch.scss" />
+    <Content Include="assets\scss\paper-dashboard\plugins\_plugin-bootstrap-table.scss" />
+    <Content Include="assets\scss\paper-dashboard\plugins\_plugin-card-wizard.scss" />
+    <Content Include="assets\scss\paper-dashboard\plugins\_plugin-datatables.net.scss" />
+    <Content Include="assets\scss\paper-dashboard\plugins\_plugin-datetimepicker.scss" />
+    <Content Include="assets\scss\paper-dashboard\plugins\_plugin-fullcalendar.scss" />
+    <Content Include="assets\scss\paper-dashboard\plugins\_plugin-jasny-fileupload.scss" />
+    <Content Include="assets\scss\paper-dashboard\plugins\_plugin-jquery.jvectormap.scss" />
+    <Content Include="assets\scss\paper-dashboard\plugins\_plugin-nouislider.scss" />
+    <Content Include="assets\scss\paper-dashboard\plugins\_plugin-perfect-scrollbar.scss" />
+    <Content Include="assets\scss\paper-dashboard\plugins\_plugin-sweetalert2.scss" />
+    <Content Include="assets\scss\paper-dashboard\plugins\_plugin-tagsinput.scss" />
+    <Content Include="assets\scss\paper-dashboard\_alerts.scss" />
+    <Content Include="assets\scss\paper-dashboard\_animated-buttons.scss" />
+    <Content Include="assets\scss\paper-dashboard\_badges.scss" />
+    <Content Include="assets\scss\paper-dashboard\_buttons.scss" />
+    <Content Include="assets\scss\paper-dashboard\_cards.scss" />
+    <Content Include="assets\scss\paper-dashboard\_carousel.scss" />
+    <Content Include="assets\scss\paper-dashboard\_checkboxes-radio.scss" />
+    <Content Include="assets\scss\paper-dashboard\_dropdown.scss" />
+    <Content Include="assets\scss\paper-dashboard\_example-pages.scss" />
+    <Content Include="assets\scss\paper-dashboard\_fixed-plugin.scss" />
+    <Content Include="assets\scss\paper-dashboard\_footers.scss" />
+    <Content Include="assets\scss\paper-dashboard\_images.scss" />
+    <Content Include="assets\scss\paper-dashboard\_info-areas.scss" />
+    <Content Include="assets\scss\paper-dashboard\_inputs.scss" />
+    <Content Include="assets\scss\paper-dashboard\_media-queries.scss" />
+    <Content Include="assets\scss\paper-dashboard\_misc-extend.scss" />
+    <Content Include="assets\scss\paper-dashboard\_misc.scss" />
+    <Content Include="assets\scss\paper-dashboard\_mixins.scss" />
+    <Content Include="assets\scss\paper-dashboard\_modals.scss" />
+    <Content Include="assets\scss\paper-dashboard\_navbar.scss" />
+    <Content Include="assets\scss\paper-dashboard\_nucleo-outline.scss" />
+    <Content Include="assets\scss\paper-dashboard\_page-header.scss" />
+    <Content Include="assets\scss\paper-dashboard\_pagination.scss" />
+    <Content Include="assets\scss\paper-dashboard\_pills.scss" />
+    <Content Include="assets\scss\paper-dashboard\_popups.scss" />
+    <Content Include="assets\scss\paper-dashboard\_progress.scss" />
+    <Content Include="assets\scss\paper-dashboard\_responsive.scss" />
+    <Content Include="assets\scss\paper-dashboard\_sections.scss" />
+    <Content Include="assets\scss\paper-dashboard\_sidebar-and-main-panel.scss" />
+    <Content Include="assets\scss\paper-dashboard\_social-buttons.scss" />
+    <Content Include="assets\scss\paper-dashboard\_tables.scss" />
+    <Content Include="assets\scss\paper-dashboard\_tabs.scss" />
+    <Content Include="assets\scss\paper-dashboard\_timeline.scss" />
+    <Content Include="assets\scss\paper-dashboard\_typography.scss" />
+    <Content Include="assets\scss\paper-dashboard\_variables.scss" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutHome.cshtml" />
+    <Content Include="Views\CuentasEstudiante\Login.cshtml" />
+    <Content Include="Views\CuentasEstudiante\ForgotPassword.cshtml" />
+    <Content Include="Views\CuentasEstudiante\ResetPassword.cshtml" />
+    <Content Include="Views\Shared\_HomePartial.cshtml" />
+    <Content Include="Views\CuentasEmpleado\Login.cshtml" />
+    <Content Include="Views\CuentasEmpleado\ForgotPassword.cshtml" />
+    <Content Include="Views\CuentasEmpleado\ResetPassword.cshtml" />
+    <Content Include="Views\VirtualEmpleado\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutMenu.cshtml" />
+    <Content Include="Views\VirtualEstudiante\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutPrincipal.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_NavSidebarPartial.cshtml" />
+    <Content Include="Views\VirtualEmpleado\RegistroCalificacion.cshtml" />
+    <Content Include="Views\Shared\_CalificacionesEstudiante.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53644</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44317/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

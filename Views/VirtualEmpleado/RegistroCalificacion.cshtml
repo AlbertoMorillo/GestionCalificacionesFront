@@ -1,0 +1,53 @@
+﻿@model GestionCalificaciones.ViewModel.Calificaciones.CalificacionesViewModel
+
+@{ 
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+
+<style>
+</style>
+<script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+<script src="~/Scripts/bootstrap.js" type="text/javascript"></script>
+<div id="containerCalificaciones">
+
+
+    <div class="card p-3">
+        @Html.Partial("_CalificacionesEstudiante", Model)
+    </div>
+
+
+</div>
+
+<script>
+    /*function EnterKeyFilter() {
+        if (window.event.keyCode == 13) {
+            event.returnValue = false;
+            event.cancel = true;
+        }
+    }*/
+    $(document).ready(function () {
+        $('body').on('keydown', 'input, select', function (e) {
+            if (e.key === "Enter") {
+                var self = $(this), form = self.parents('form:eq(0)'), focusable, next;
+                focusable = form.find('input,a,select,button,textarea').filter(':visible:not([readonly]):enabled');
+                next = focusable.eq(focusable.index(this) + 1);
+                if (next.length) {
+                    next.focus();
+                } else {
+                    return false;
+                }
+                return false;
+            }
+        });
+
+        var flagGuardadoFinal = @ViewBag.guardadoFinal.ToString().ToLower()
+        if (flagGuardadoFinal) {
+            $("#utilsTitle").text("Atención");
+            $("#utilsP").text("Calificaciones registradas correctamente.");
+            $("#modalUtils").modal("show");
+        }
+    });
+
+</script>
+
+

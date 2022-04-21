@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "_NavSidebarPartial";
+}
+
+<style>
+    .sidebar-wrapper.ps ul > li > a:hover {
+        background-color: cornflowerblue;
+        border-radius: 50px;
+    }
+
+        .sidebar-wrapper.ps ul > li > a:hover i {
+            color: steelblue;
+        }
+
+        .sidebar-wrapper.ps ul > li > a:hover p {
+            color: steelblue;
+        }
+
+        .sidebar-wrapper.ps ul > li > a:hover span {
+            color: steelblue;
+        }
+
+        .sidebar-wrapper.ps ul > li > a:hover .caret {
+            color: steelblue;
+        }
+
+    .sidebar-wrapper.ps ul > li > a > i {
+        color: #03045E;
+    }
+
+    .sidebar-wrapper.ps ul > li > a > p {
+        color: #03045E;
+    }
+
+    .sidebar .nav li > a, .off-canvas-sidebar .nav li > a {
+        color: darkblue;
+    }
+</style>
+
+@if (User.IsInRole("ESTUDIANTES"))
+{
+    @*1*@
+    <ul class="nav">
+        <li class="active">
+            <a href="~/VirtualEstudiante">
+                <i class="nc-icon nc-box "></i>
+                <p>Resumen</p>
+            </a>
+        </li>
+
+        <li class="active">
+            <a data-toggle="collapse" href="#asignaturas">
+                <i class="nc-icon nc-book-bookmark"></i>
+                <p>
+                    Procesos académicos <b class="caret"></b>
+                </p>
+            </a>
+            <div class="collapse " id="asignaturas">
+                <ul class="nav">
+                    <li>
+                        <a href="~/VirtualEstudiante/Calificaciones">
+                            <span class="sidebar-mini-icon">C</span>
+                            <span class="sidebar-normal"> Calificaciones </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+    </ul>
+    <!-- Navbar -->
+}
+@if (User.IsInRole("EMPLEADO"))
+{
+    <ul class="nav">
+
+        <li class="active">
+            <a href="~/VirtualEmpleado">
+                <i class="nc-icon nc-box"></i>
+                <p>Resumen</p>
+            </a>
+        </li>
+
+
+        <li class="active">
+            <a href="~/VirtualEmpleado/RegistroCalificacion">
+                <i class="nc-icon nc-paper"></i>
+                <p>
+                    Registro de Calificaciones
+                </p>
+            </a>
+        </li>
+    </ul>
+
+
+}
+
+
+

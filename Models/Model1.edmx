@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GestionCalificacionDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="spes_CalificacionEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="materia" Type="varchar" Mode="In" />
+          <Parameter Name="grupo" Type="int" Mode="In" />
+          <Parameter Name="semestre" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="GestionCalificacionDBModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GestionCalificacionDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="GestionCalificacionDBEntities1" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="spes_CalificacionEstudiante" ReturnType="Collection(GestionCalificacionDBModel.spes_CalificacionEstudiante_Result)">
+            <Parameter Name="materia" Mode="In" Type="String" />
+            <Parameter Name="grupo" Mode="In" Type="Int32" />
+            <Parameter Name="semestre" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="spes_CalificacionEstudiante_Result">
+          <Property Type="Int32" Name="semestre" Nullable="false" />
+          <Property Type="Int32" Name="matriculan" Nullable="false" />
+          <Property Type="String" Name="PrimerNombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SegundoNombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="materia" Nullable="true" />
+          <Property Type="Int32" Name="grupo" Nullable="true" />
+          <Property Type="Int32" Name="tpractico" Nullable="true" />
+          <Property Type="Int32" Name="parcial" Nullable="true" />
+          <Property Type="Int32" Name="final" Nullable="true" />
+          <Property Type="Int32" Name="total" Nullable="true" />
+          <Property Type="String" Name="NL" Nullable="true" MaxLength="5" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GestionCalificacionDBModelStoreContainer" CdmEntityContainer="GestionCalificacionDBEntities1" >
+          <FunctionImportMapping FunctionImportName="spes_CalificacionEstudiante" FunctionName="GestionCalificacionDBModel.Store.spes_CalificacionEstudiante" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionCalificacionDBModel.spes_CalificacionEstudiante_Result">
+                <ScalarProperty Name="semestre" ColumnName="semestre" />
+                <ScalarProperty Name="matriculan" ColumnName="matriculan" />
+                <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="materia" ColumnName="materia" />
+                <ScalarProperty Name="grupo" ColumnName="grupo" />
+                <ScalarProperty Name="tpractico" ColumnName="tpractico" />
+                <ScalarProperty Name="parcial" ColumnName="parcial" />
+                <ScalarProperty Name="final" ColumnName="final" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="NL" ColumnName="NL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

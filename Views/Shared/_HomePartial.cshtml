@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="~/imagen/favicon-32x32new.png" sizes="32x32" />
+    <script src="https://kit.fontawesome.com/26aa8e41fa.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <!-- CSS Files -->
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../assets/css/paper-dashboard.css?v=2.1.1" rel="stylesheet" />
+
+    <title>Gestion Calificación</title>
+
+    @Styles.Render("~/Content/css")
+    @*@Scripts.Render("~/bundles/modernizr")*@
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="~/Content/Home.css" rel="stylesheet" />
+</head>
+<body>
+    @{
+        Html.RenderPartial("_MenuSuperiolPartial");
+    }
+
+    @RenderBody()
+
+    @{
+        Html.RenderPartial("_MenuInferiolPartial");
+    }
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <link href='~/assets/js/plugins/fullcalendar/main.css' rel='stylesheet' />
+    <script src='~/assets/js/plugins/fullcalendar/main.js'></script>
+    <script src='~/assets/js/plugins/fullcalendar/locales-all.js'></script>
+    <script src='~/assets/js/plugins/moment.min.js'></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="../../assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../../assets/js/paper-dashboard.min.js?v=2.1.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+    <script src="../../assets/Notificaciones/Notificaciones.js"></script>
+    <link href='~/assets/Notificaciones/Notificaciones.css' rel='stylesheet' />
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

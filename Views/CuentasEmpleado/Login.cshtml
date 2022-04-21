@@ -1,0 +1,69 @@
+﻿@model GestionCalificaciones.ViewModel.Usuarios.UsuariosFormViewModel
+
+@{
+    Layout = null;
+}
+@{
+    ViewBag.Title = "Login Empleado";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="apple-touch-icon" sizes="100x100" href="~/imagen/unphu_verde.png">
+    <link rel="icon" type="image/png" href="~/imagen/unphu_verde.png">
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="col-lg-8 p-0">
+        <div class="jumbotron  m-0 text-black-50 rounded bg-dark col-xl-12 border-left" style="        height: 500px;
+        background-image: url('../../imagen/unphu1.jpeg');
+        background-repeat: no-repeat;
+        background-size: cover;">
+            <div class="col-md-6 px-0" style="color:whitesmoke;">
+                <h1 class="display-4 font-weight-bold">UNPHU Administrativos / Docente</h1>
+                <p class="lead my-3">UNPHU.</p>
+                <p class="lead mb-0"><a href="~/Home/" class="text-black-50 font-weight-bold text-primary">Ir a inicio...</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 align">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-signin" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="text-center mb-5">
+                <img class="mb-4" src="~/imagen/unphu_verde.png" alt="" width="150" height="150">
+                <h1 class="h3 mb-3 font-weight-normal">Administrativos / Docente virtual</h1>
+            </div>
+            <div>
+                @Html.ValidationSummary(true, "Usuario o contraseña incorrecta.", new { @class = "text-danger" })
+            </div>
+            <div class="form-label-group">
+                @Html.TextBoxFor(model => model.Usuario, new { id = "inputEmail", @class = "form-control" })
+                <label for="inputEmail">@Html.DisplayNameFor(model => model.Usuario)</label>
+            </div>
+            <div>
+                @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-label-group">
+                @Html.PasswordFor(model => model.Password, new { id = "inputPassword", @class = "form-control" })
+                <label for="inputPassword">@Html.DisplayNameFor(model => model.Password):</label>
+            </div>
+
+            <div class="checkbox m-4">
+                <label>
+                    <input type="checkbox" value="remember-me"> Recordar este equipo siempre con mi cuenta
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
+        }
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
