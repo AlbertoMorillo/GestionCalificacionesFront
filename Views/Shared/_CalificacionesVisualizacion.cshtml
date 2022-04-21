@@ -1,0 +1,34 @@
+﻿@model List<GestionCalificaciones.ViewModel.CalificacionesEstudiante.CalificacionesEstudianteViewModel>
+
+<div class="" id="partialCalificaciones">
+    <table class="table border-bottom" id="tableCalificaciones">
+        <thead>
+            <tr>
+                <th scope="col" style="width: 70px;">Código asignatura</th>
+                <th scope="col" class="w-75">Nombre de asignatura</th>
+                <th scope="col" style="width: 70px;">TP</th>
+                <th scope="col" style="width: 70px;">PP</th>
+                <th scope="col" style="width: 70px;">EF</th>
+                <th scope="col" style="width: 70px;">PF</th>
+                <th scope="col" style="width: 70px;">NL</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(s => item.Materia)</td>
+                        <td>@Html.DisplayFor(s => item.Asignatura)</td>
+                        <td>@Html.DisplayFor(s => item.practica)</td>
+                        <td>@Html.DisplayFor(s => item.parcial)</td>
+                        <td>@Html.DisplayFor(s => item.final)</td>
+                        <td>@Html.DisplayFor(s => item.total)</td>
+                        <td>@Html.DisplayFor(s => item.NotaLiteral)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

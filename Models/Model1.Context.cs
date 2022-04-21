@@ -45,5 +45,18 @@ namespace GestionCalificaciones.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spes_CalificacionEstudiante_Result>("spes_CalificacionEstudiante", materiaParameter, grupoParameter, semestreParameter);
         }
+    
+        public virtual ObjectResult<spes_Calificaciones_Result> spes_Calificaciones(string matricula, Nullable<int> semestre)
+        {
+            var matriculaParameter = matricula != null ?
+                new ObjectParameter("matricula", matricula) :
+                new ObjectParameter("matricula", typeof(string));
+    
+            var semestreParameter = semestre.HasValue ?
+                new ObjectParameter("semestre", semestre) :
+                new ObjectParameter("semestre", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spes_Calificaciones_Result>("spes_Calificaciones", matriculaParameter, semestreParameter);
+        }
     }
 }

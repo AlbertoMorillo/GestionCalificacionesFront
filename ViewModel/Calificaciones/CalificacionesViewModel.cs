@@ -18,7 +18,7 @@ namespace GestionCalificaciones.ViewModel.Calificaciones
         public string matriculan { get; set; }
         public int? escuela { get; set; }
         public int? pensum { get; set; }
-
+        public string Asignatura { get; set; }
         public string idProfesor { get; set; }
         public int? grupo { get; set; }
         public int? tipo { get; set; }

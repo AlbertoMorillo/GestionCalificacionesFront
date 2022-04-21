@@ -1,0 +1,61 @@
+﻿@model List<GestionCalificaciones.ViewModel.CalificacionesEstudiante.CalificacionesEstudianteViewModel>
+@{
+    ViewBag.Title = "Calificaciones";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
+}
+
+
+<div class="card p-3">
+    <nav>
+        <h3 class="pr-5 text-center ">Calificaciones</h3>
+    </nav>
+    <hr />
+    <div class="form-row">
+        <div class="col-4">
+            <label for="semestreDropDown">Cuatrimestre</label>
+            @Html.DropDownListFor(m => m.FirstOrDefault().semestreSelected, ViewBag.listSemestre as IEnumerable<SelectListItem>,
+    new
+        {
+            @class = "custom-select custom-select-lg",
+            @id = "semestreDropDown"
+    })
+        </div>
+        <span id="textLoading" class="font-weight-bold text-uppercase text-center text-primary"></span>
+    </div>
+
+    @Html.Partial("_CalificacionesVisualizacion", Model)
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $(document).on("change", "#semestreDropDown", function (e) {
+                var val = $('#semestreDropDown option:selected').val();
+                ModalLoading();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("getCalificacionesBySemestre", "VirtualEstudiante")',
+                    data: { semestreSelected: val},
+                    success: function successFunc(data) {
+                        $("#partialCalificaciones").replaceWith(data);
+                    },
+                    error: function errorFunc() {
+                        alert('error');
+                    },
+                    complete: function () {
+                        ModalLoadingFinished();
+                    }
+                });
+                e.stopImmediatePropagation();
+            });
+        });
+
+        function ModalLoading() {
+            $("#textLoading").text("Cargando...");
+        }
+
+        function ModalLoadingFinished() {
+            $("#textLoading").text("");
+        }
+    </script>
+}

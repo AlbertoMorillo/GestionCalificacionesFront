@@ -5,6 +5,10 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="GestionCalificacionDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="spes_Calificaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="matricula" Type="varchar" Mode="In" />
+          <Parameter Name="semestre" Type="int" Mode="In" />
+        </Function>
         <Function Name="spes_CalificacionEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="materia" Type="varchar" Mode="In" />
           <Parameter Name="grupo" Type="int" Mode="In" />
@@ -21,6 +25,10 @@
             <Parameter Name="grupo" Mode="In" Type="Int32" />
             <Parameter Name="semestre" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="spes_Calificaciones" ReturnType="Collection(GestionCalificacionDBModel.spes_Calificaciones_Result)">
+            <Parameter Name="matricula" Mode="In" Type="String" />
+            <Parameter Name="semestre" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="spes_CalificacionEstudiante_Result">
           <Property Type="Int32" Name="semestre" Nullable="false" />
@@ -35,6 +43,25 @@
           <Property Type="Int32" Name="parcial" Nullable="true" />
           <Property Type="Int32" Name="final" Nullable="true" />
           <Property Type="Int32" Name="total" Nullable="true" />
+          <Property Type="String" Name="NL" Nullable="true" MaxLength="5" />
+        </ComplexType>
+        <ComplexType Name="spes_Calificaciones_Result">
+          <Property Type="Int32" Name="semestre" Nullable="true" />
+          <Property Type="String" Name="matriculan" Nullable="true" MaxLength="18" />
+          <Property Type="Int32" Name="escuela" Nullable="true" />
+          <Property Type="Int32" Name="pensum" Nullable="true" />
+          <Property Type="Int32" Name="materia" Nullable="true" />
+          <Property Type="Int32" Name="grupo" Nullable="true" />
+          <Property Type="Int32" Name="tipo" Nullable="true" />
+          <Property Type="Int32" Name="parcial" Nullable="true" />
+          <Property Type="Int32" Name="practica" Nullable="true" />
+          <Property Type="Int32" Name="final" Nullable="true" />
+          <Property Type="Int32" Name="total" Nullable="true" />
+          <Property Type="Int32" Name="estatus" Nullable="true" />
+          <Property Type="Int32" Name="tpractico" Nullable="true" />
+          <Property Type="Int32" Name="usuario" Nullable="true" />
+          <Property Type="Int32" Name="codigoprof" Nullable="true" />
+          <Property Type="Int32" Name="IdCalificacion" Nullable="false" />
           <Property Type="String" Name="NL" Nullable="true" MaxLength="5" />
         </ComplexType>
       </Schema>
@@ -58,6 +85,29 @@
                 <ScalarProperty Name="parcial" ColumnName="parcial" />
                 <ScalarProperty Name="final" ColumnName="final" />
                 <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="NL" ColumnName="NL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spes_Calificaciones" FunctionName="GestionCalificacionDBModel.Store.spes_Calificaciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionCalificacionDBModel.spes_Calificaciones_Result">
+                <ScalarProperty Name="semestre" ColumnName="semestre" />
+                <ScalarProperty Name="matriculan" ColumnName="matriculan" />
+                <ScalarProperty Name="escuela" ColumnName="escuela" />
+                <ScalarProperty Name="pensum" ColumnName="pensum" />
+                <ScalarProperty Name="materia" ColumnName="materia" />
+                <ScalarProperty Name="grupo" ColumnName="grupo" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="parcial" ColumnName="parcial" />
+                <ScalarProperty Name="practica" ColumnName="practica" />
+                <ScalarProperty Name="final" ColumnName="final" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="tpractico" ColumnName="tpractico" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="codigoprof" ColumnName="codigoprof" />
+                <ScalarProperty Name="IdCalificacion" ColumnName="IdCalificacion" />
                 <ScalarProperty Name="NL" ColumnName="NL" />
               </ComplexTypeMapping>
             </ResultMapping>
